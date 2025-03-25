@@ -1017,6 +1017,7 @@ ul{
     background-color: #ffffff;
     color:#24262b;
 }
+/*responsive*/
 @media screen and (max-width:500px){
     .form .column {
         flex-wrap: wrap;

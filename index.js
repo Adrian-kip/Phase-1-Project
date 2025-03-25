@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     const slideWidth = slides[0].getBoundingClientRect().width;
     let currentIndex = 0;
+    
+    // Set up dots
     slides.forEach((_, index) => {
         const dot = document.createElement('div');
         dot.classList.add('dot');
@@ -33,31 +35,39 @@ document.addEventListener('DOMContentLoaded', function() {
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
     });
-    const setSlidePosition = () => {
-        slides.forEach((slide, index) => {
-            slide.style.left = `${slideWidth * index}px`;
-        });
-    };
-    const goToSlide = (index) => {
-        track.style.transform = `translateX(-${slideWidth * index}px)`;
-        currentIndex = index;
+    
+    // Center the active slide
+    const centerActiveSlide = () => {
+        const slider = document.querySelector('.partners-slider');
+        const activeSlide = slides[currentIndex];
+        const sliderRect = slider.getBoundingClientRect();
+        const slideRect = activeSlide.getBoundingClientRect();
+        
+        const scrollPosition = slideRect.left - sliderRect.left - (sliderRect.width / 2) + (slideRect.width / 2);
+        track.style.transform = `translateX(-${scrollPosition}px)`;
         updateDots();
     };
+    
     const updateDots = () => {
         document.querySelectorAll('.dot').forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
     };
+    
     const nextSlide = () => {
         currentIndex = (currentIndex + 1) % slides.length;
-        goToSlide(currentIndex);
+        centerActiveSlide();
     };
+    
     const prevSlide = () => {
         currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        goToSlide(currentIndex);
+        centerActiveSlide();
     };
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-    setSlidePosition();
-    window.addEventListener('resize', setSlidePosition);
+    slides.forEach((slide, index) => {
+        slide.style.left = `${slideWidth * index}px`;
+    });
+    centerActiveSlide();
+    window.addEventListener('resize', centerActiveSlide);
 });
