@@ -80,7 +80,6 @@ body{
 @media (max-width: 480px) {
     .firstheading {
         padding: 3rem 1rem;
-        margin-top: 60px; 
     }
     
     .firstheading h1 {
