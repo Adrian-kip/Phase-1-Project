@@ -3,12 +3,94 @@
 
 body{
     line-height: 1.5;
+    padding-top: 80px;
     font-family: "Poppins", sans-serif;
 }
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+.firstheading {
+    text-align: center;
+    padding: 6rem 2rem;
+    background-color: #24262b;
+    color: #ddd;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(221, 221, 221, 0.1);
+}
+.firstheading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(221, 221, 221, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(221, 221, 221, 0.03) 0%, transparent 25%);
+}
+.firstheading h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+    position: relative;
+    color: #fff;
+    animation: fadeIn 0.8s ease-out;
+}
+.firstheading p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #ddd;
+    opacity: 0.9;
+    position: relative;
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+.firstheading:hover h1 {
+    text-shadow: 0 0 10px rgba(221, 221, 221, 0.3);
+    transition: text-shadow 0.3s ease;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@media (max-width: 768px) {
+    .firstheading {
+        padding: 4rem 1.5rem;
+    }
+    
+    .firstheading h1 {
+        font-size: 2.3rem;
+    }
+    
+    .firstheading p {
+        font-size: 1.1rem;
+    }
+}
+@media (max-width: 480px) {
+    .firstheading {
+        padding: 3rem 1rem;
+        margin-top: 60px; 
+    }
+    
+    .firstheading h1 {
+        font-size: 1.8rem;
+        letter-spacing: -0.3px;
+    }
+    
+    .firstheading p {
+        font-size: 1rem;
+    }
 }
 .navbar {
     background-color: #24262b;
@@ -17,6 +99,9 @@ body{
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar span{
+    color: #ffcc74;
 }
 .navbar a span{
     font-size: 50px;
@@ -89,10 +174,10 @@ body{
 
     .menu {
         position: absolute;
-        top: 60px;
+        top: 80px;
         left: 0;
         width: 100%;
-        background-color: #2c3e50;
+        background-color: #24262b;
         flex-direction: column;
         align-items: center;
         clip-path: circle(0px at 90% -10%);
@@ -134,7 +219,205 @@ body{
 .hamburger.active .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+.graduates-section {
+    background-color: #f8f9fa;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+}
 
+.graduates-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.graduates-section h2 {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.graduates-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #6e8efb, #a777e3);
+}
+
+.graduates-section .lead {
+    color: #24262b;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.graduates-section p {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(110, 142, 251, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(110, 142, 251, 0.4);
+}
+@media (max-width: 768px) {
+    .graduates-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .graduates-section h2 {
+        font-size: 2rem;
+    }
+    
+    .graduates-section .lead {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .graduates-section {
+        padding: 2rem 1rem;
+    }
+    
+    .graduates-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .cta-button {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+}
+.bootcamps-section {
+    background-color: #ffffff;
+    padding: 4rem 2rem;
+    position: relative;
+    border-top: 1px solid rgba(36, 38, 43, 0.1);
+    border-bottom: 1px solid rgba(36, 38, 43, 0.1);
+}
+
+.bootcamps-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bootcamps-section h2 {
+    color: #24262b;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.bootcamps-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #6e8efb, #a777e3);
+}
+
+.bootcamps-section p {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.bootcamp-logos {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.logo-container {
+    background-color: #f8f9fa;
+    padding: 1.5rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(36, 38, 43, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: translateY(-5px);
+}
+
+.bootcamp-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(30%);
+    transition: filter 0.3s ease;
+}
+
+.bootcamp-logo:hover {
+    filter: grayscale(0%);
+}
+@media (max-width: 768px) {
+    .bootcamps-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .bootcamps-section h2 {
+        font-size: 2rem;
+    }
+    
+    .bootcamp-logos {
+        gap: 2rem;
+    }
+    
+    .logo-container {
+        padding: 1rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bootcamps-section {
+        padding: 2.5rem 1rem;
+    }
+    
+    .bootcamps-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .bootcamp-logos {
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bootcamp-logo {
+        height: 50px;
+    }
+}
 .container{
     max-width: 1170px;
     margin: auto;
