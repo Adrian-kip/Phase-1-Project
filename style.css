@@ -11,7 +11,6 @@ body{
     padding:0;
     box-sizing:border-box;
 }
-/* Hero Section with Tech Background */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -116,7 +115,6 @@ body{
     }
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
     .hero-title {
         font-size: 3.5rem;
@@ -280,7 +278,6 @@ body{
 .hamburger.active .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
-/* Graduates Section with Side Image */
 .graduates-section {
     background-color: #24262b;
     padding: 6rem 2rem;
@@ -505,7 +502,6 @@ body{
         height: 50px;
     }
 }
-/* Shared Styles */
 .partnership-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -550,8 +546,6 @@ body{
     border-radius: 2px;
     margin: 0 auto;
 }
-
-/* Partnership Section */
 .tech-partnership-section {
     position: relative;
     padding: 6rem 2rem;
@@ -628,8 +622,6 @@ body{
 .tech-partner-btn:hover svg {
     transform: translateX(5px);
 }
-
-/* Partners Section */
 .partners-section {
     background-color: #f5f5f7;
     padding: 6rem 2rem;
@@ -735,8 +727,6 @@ body{
     background: #ffcc74;
     transform: scale(1.2);
 }
-
-/* Responsive Design */
 @media (max-width: 1200px) {
     .slide {
         flex: 0 0 25%;
@@ -932,7 +922,6 @@ ul{
     color: #24262b;
     background-color: #ffffff;
 }
-/*responsive*/
 @media(max-width: 767px){
     .footer-col{
         width: 50%;
@@ -1028,7 +1017,6 @@ ul{
     background-color: #ffffff;
     color:#24262b;
 }
-/*responsive*/
 @media screen and (max-width:500px){
     .form .column {
         flex-wrap: wrap;
