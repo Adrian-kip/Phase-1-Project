@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Hub</title>
-    <link rel="icon" type="image/x-icon"href="./images/Screenshot from 2025-03-26 13-55-47.png">
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,20 +21,20 @@
             </div>
             
             <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li class="dropdown">
-                    <a href="#">Services</a>
+                    <a href="#services">Services</a>
                     <ul class="dropdown-content">
-                        <li><a href="#">Graduates</a></li>
-                        <li><a href="#">Partners</a></li>
+                        <li><a href="#graduates">Graduates</a></li>
+                        <li><a href="#partnersect">Partners</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#footer">Contact</a></li>
             </ul>
         </div>
     </nav>
-    <div class="hero-section">
+    <div  id="home" class="hero-section">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Welcome to the Hub</h1>
@@ -45,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="graduates-section">
+    <div id="graduates" class="graduates-section">
         <div class="graduates-container">
             <div class="graduates-content">
                 <div class="section-header">
@@ -54,12 +53,12 @@
                 </div>
                 <p class="lead">High Schoolers, get ready to jumpstart your future with The Hub! We offer hands-on bootcamps and courses designed to give you the real-world skills needed to succeed in today's job market.</p>
                 <p class="secondary">Whether you're interested in tech, business, or creative fields, we help you upskill and stand out. Don't miss this chance to get ahead—join us and start building your career today!</p>
-                <a href="#" class="modern-cta">
-                    <span>Join Today</span>
+                <button id="schoolSearchBtn" class="modern-cta">
+                    <span>Read more</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                </a>
+                </button>
             </div>
             <div class="graduates-image">
                 <div class="image-wrapper">
@@ -69,14 +68,16 @@
             </div>
         </div>
     </div>
-    <div class="bootcamps-section">
+    <!-- School Search Popup -->
+    
+    <div id="services" class="bootcamps-section">
         <div class="bootcamps-content">
             <h2>Bootcamps</h2>
             <p>At The Hub, we connect you to top bootcamps like Moringa School and Eldohub, offering practical, hands-on training in fields like tech, coding, and entrepreneurship. These programs are designed to give you the skills and experience needed to succeed in today's competitive job market. Whether you're looking to break into software development or explore new career paths, these bootcamps provide the perfect launchpad!</p>
         </div>
     </div>
-    <div class="partnership-container">
-        <!-- Partnership Section -->
+<div id="partnersect" class="partnership-container">
+<!-- Partnership Section -->
         <div class="tech-partnership-section">
             <div class="tech-overlay"></div>
             <div class="partnership-content-wrapper">
@@ -86,7 +87,7 @@
                     <p>Join The Hub and take charge of shaping the next generation of skilled professionals! Partner with us to connect motivated high school graduates to your programs, giving them the hands-on training they need to succeed.</p>
                     <p>Together, we can inspire the future workforce and create impactful learning experiences that truly make a difference.</p>
                     <button class="tech-partner-btn">
-                        <span>Join Our Community</span>
+                        <span>Join Our Network</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -94,60 +95,114 @@
                 </div>
             </div>
         </div>
-           <!-- Partner Slider Section -->
-<div class="partners-section">
-    <div class="section-header">
-        <h2>Our <span>Education Partners</span></h2>
-        <div class="underline"></div>
-    </div>
+        <section class="bootcamp-section">
+            <div class="container">
+                <div class="header">
+                    <h2><span class="highlight">Featured Bootcamps</span></h2>
+                    <p class="subtitle">Discover top-rated coding bootcamps that transform careers</p>
+                </div>
     
-    <div class="partners-slider-container">
-        <button class="slider-arrow prev-arrow">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-        
-        <div class="partners-slider">
-            <div class="slider-track">
-                <div class="slide">
-                    <div class="slide-content">
-                        <img src="./images/download.png" alt="Moringa School">
+                <!-- Search and Filter Controls -->
+                <div class="controls">
+                    <div class="search">
+                        <input type="text" id="searchInput" placeholder="Search bootcamps...">
+                        <i class="fas fa-search search-icon"></i>
                     </div>
+    
+                    <div class="filters">
+                        <select id="countryFilter">
+                            <option value="">All Countries</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Kenya">Kenya</option>
+                        </select>
+    
+                        <select id="stateFilter" style="display:none">
+                            <option value="">All States/Regions</option>
+                        </select>
+    
+                        <select id="ratingFilter">
+                            <option value="0">All Ratings</option>
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="3">★★★☆☆</option>
+                        </select>
+                    </div>
+    
+                    <button id="addBootcampBtn">
+                        <i class="fas fa-plus"></i>
+                        Add Bootcamp
+                    </button>
                 </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <img src="./images/eldohub.png" alt="Eldohub">
-                    </div>
+    
+                <!-- Bootcamps Grid -->
+                <div id="bootcampsGrid" class="bootcamps-grid">
+                    <!-- Bootcamp cards will be inserted here by JavaScript -->
                 </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <img src="./images/actualize.png" alt="Actualize">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <img src="./images/flatiron.jpeg" alt="Flatiron School">
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <img src="./images/alx.png" alt="ALX">
-                    </div>
+    
+                <!-- Load More Button -->
+                <div class="load-more">
+                    <button id="loadMoreBtn">Load More Bootcamps</button>
                 </div>
             </div>
-        </div>
-        
-        <button class="slider-arrow next-arrow">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </button>
-    </div>
+        </section>
     
-    <div class="slider-dots"></div>
-</div>
-    <section class="about">
+        <!-- Add Bootcamp Modal -->
+        <div id="addBootcampModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Add New Bootcamp</h3>
+                <form id="bootcampForm">
+                    <div class="form-group">
+                        <label for="bootcampName">Bootcamp Name*</label>
+                        <input type="text" id="bootcampName" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="country">Country*</label>
+                        <select id="country" required>
+                            <option value="">Select Country</option>
+                            <option value="United States">United States</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Kenya">Kenya</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="state">State/Region*</label>
+                        <select id="state" required disabled>
+                            <option value="">Select State/Region</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="rating">Rating*</label>
+                        <select id="rating" required>
+                            <option value="5">★★★★★</option>
+                            <option value="4">★★★★☆</option>
+                            <option value="3">★★★☆☆</option>
+                        </select>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="description">Description*</label>
+                        <textarea id="description" rows="4" required></textarea>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="website">Website URL*</label>
+                        <input type="url" id="website" required>
+                    </div>
+    
+                    <button type="submit" class="submit-btn">Add Bootcamp</button>
+                </form>
+            </div>
+        </div>
+<section id="about" class="about">
         <div class="content">
             <div class="text">
                 <h1>About Us</h1>
@@ -160,7 +215,7 @@
             </div>
         </div>
     </section>
-    <div  id="form-container">
+<div  id="form-container">
     <section class="form-container">
         <header>Sign Up</header>
         <form action="" class="form">
@@ -208,7 +263,7 @@
         </form>
     </section>
     </div>
-    <footer class="footer">
+<footer id="footer" class="footer">
         <div class="container">
         <div class="row">
         <div class="footer-col">

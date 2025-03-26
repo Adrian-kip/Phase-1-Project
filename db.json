@@ -1,11 +1,58 @@
 {
-  "Students": [
+  "bootcamps": [
     {
-      "id": "9eff"
+      "id": 1,
+      "name": "Moringa School",
+      "country": "Kenya",
+      "state": "Nairobi",
+      "rating": 5,
+      "description": "Leading coding bootcamp in Africa offering software development courses.",
+      "website": "https://moringaschool.com"
     },
     {
-      "id": "ef54"
+      "id": 2,
+      "name": "Flatiron School",
+      "country": "United States",
+      "state": "New York",
+      "rating": 4,
+      "description": "Top-rated coding bootcamp with campuses across the US and online courses.",
+      "website": "https://flatironschool.com"
+    },
+    {
+      "id": 3,
+      "name": "Le Wagon",
+      "country": "United Kingdom",
+      "state": "London",
+      "rating": 5,
+      "description": "Global coding bootcamp with campuses worldwide.",
+      "website": "https://www.lewagon.com"
+    },
+    {
+      "id": 4,
+      "name": "BrainStation",
+      "country": "Canada",
+      "state": "Toronto",
+      "rating": 4,
+      "description": "Digital skills training provider with campuses in North America.",
+      "website": "https://brainstation.io"
+    },
+    {
+      "id": 5,
+      "name": "Code Institute",
+      "country": "Germany",
+      "state": "Berlin",
+      "rating": 4,
+      "description": "Online coding bootcamp offering full-stack development courses.",
+      "website": "https://codeinstitute.net"
+    },
+    {
+      "id": 6,
+      "name": "General Assembly",
+      "country": "United States",
+      "state": "California",
+      "rating": 4,
+      "description": "Global education company focusing on tech, business, and design skills.",
+      "website": "https://generalassemb.ly"
     }
-  ],
-  "Partners": []
+  ]
 }
