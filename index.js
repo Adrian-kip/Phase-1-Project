@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+    /*Dropdown-menu*/
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('.menu');
     const dropdowns = document.querySelectorAll('.dropdown');
@@ -16,58 +17,102 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const track = document.querySelector('.slider-track');
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const nextBtn = document.querySelector('.next-arrow');
+    /*Slideshow*/
+    const sliderTrack = document.querySelector('.slider-track');
+    const slides = document.querySelectorAll('.slide');
     const prevBtn = document.querySelector('.prev-arrow');
+    const nextBtn = document.querySelector('.next-arrow');
     const dotsContainer = document.querySelector('.slider-dots');
     
-    const slideWidth = slides[0].getBoundingClientRect().width;
     let currentIndex = 0;
+    const slideCount = slides.length;
     
-    // Set up dots
+    // Create dots
     slides.forEach((_, index) => {
-        const dot = document.createElement('div');
+        const dot = document.createElement('span');
         dot.classList.add('dot');
-        if(index === 0) dot.classList.add('active');
+        if (index === 0) dot.classList.add('active');
         dot.addEventListener('click', () => goToSlide(index));
         dotsContainer.appendChild(dot);
     });
     
-    // Center the active slide
-    const centerActiveSlide = () => {
-        const slider = document.querySelector('.partners-slider');
-        const activeSlide = slides[currentIndex];
-        const sliderRect = slider.getBoundingClientRect();
-        const slideRect = activeSlide.getBoundingClientRect();
-        
-        const scrollPosition = slideRect.left - sliderRect.left - (sliderRect.width / 2) + (slideRect.width / 2);
-        track.style.transform = `translateX(-${scrollPosition}px)`;
-        updateDots();
-    };
+    const dots = document.querySelectorAll('.dot');
     
-    const updateDots = () => {
-        document.querySelectorAll('.dot').forEach((dot, index) => {
+    // Update slider position
+    function updateSlider() {
+        sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
-    };
+    }
     
-    const nextSlide = () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        centerActiveSlide();
-    };
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSlider();
+    }
     
-    const prevSlide = () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        centerActiveSlide();
-    };
+    // Next slide
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slideCount;
+        updateSlider();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+    }
+    
+    // Event listeners
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-    slides.forEach((slide, index) => {
-        slide.style.left = `${slideWidth * index}px`;
+    
+    // Auto-slide (optional)
+    let slideInterval = setInterval(nextSlide, 5000);
+    
+    // Pause on hover
+    const slider = document.querySelector('.partners-slider');
+    slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slider.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(nextSlide, 5000);
     });
-    centerActiveSlide();
-    window.addEventListener('resize', centerActiveSlide);
+    
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    sliderTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+    
+    sliderTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, {passive: true});
+    
+    function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+            nextSlide();
+        }
+        if (touchEndX > touchStartX + 50) {
+            prevSlide();
+        }
+    }
+    // Optional animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        const graduatesSection = document.querySelector('.graduates-section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        observer.observe(graduatesSection);
+    });
 });
