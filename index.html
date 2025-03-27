@@ -213,53 +213,52 @@
             </div>
         </div>
     </section>
-<div  id="form-container">
-    <section class="form-container">
-        <header>Sign Up</header>
-        <form action="" class="form">
-            <div class="input-box">
-                <label for="text">Full Name</label>
-                <input type="text" placeholder="Enter full name" required/>
-            </div>
-            <div class="input-box">
-                <label for="text">Email Address</label>
-                <input type="text" placeholder="Enter email address" required/>
-            </div>
-            <div class="column">
+    <div id="form-container">
+        <section class="form-container">
+            <header>Sign Up</header>
+            <form id="signupForm" class="form">
                 <div class="input-box">
-                    <label for="text">Phone Number</label>
-                    <input type="text" placeholder="Enter phone number" required/>
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required/>
                 </div>
                 <div class="input-box">
-                    <label for="text">Date of Birth</label>
-                    <input type="text" placeholder="Enter date of birth" required/>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter email address" required/>
                 </div>
+                <div class="column">
+                    <div class="input-box">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required/>
+                    </div>
+                    <div class="input-box">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" placeholder="Enter date of birth" required/>
+                    </div>
                 </div>
                 <div class="gender-box">
                     <h3>Gender</h3>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" name="gender" id="check-male" checked>
-                            <label for="check">Male</label>
+                            <input type="radio" name="gender" id="check-male" value="male" checked>
+                            <label for="check-male">Male</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" name="gender" id="check-female">
-                            <label for="check">Female</label>
+                            <input type="radio" name="gender" id="check-female" value="female">
+                            <label for="check-female">Female</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" name="gender" id="check-other">
+                            <input type="radio" name="gender" id="check-other" value="other">
                             <label for="check-other">Prefer not to say</label>
                         </div>
                     </div>
                 </div>
                 <div class="input-box">
-                    <label for="text">Password</label>
-                    <input type="password" placeholder="Enter password" required/>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required/>
                 </div>
                 <button type="submit">Sign Up</button>
-            </div>
-        </form>
-    </section>
+            </form>
+        </section>
     </div>
 <footer id="footer" class="footer">
         <div class="container">

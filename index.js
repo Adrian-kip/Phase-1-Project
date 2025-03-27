@@ -1,55 +1,55 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Smooth scrolling for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80, // Adjust for fixed header
-                behavior: 'smooth'
-            });
-            
-            // Close mobile menu if open
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.remove('active');
-        }
-    });
-});
-
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const navbar = document.querySelector('.navbar');
-
-hamburger.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const hamburger = document.querySelector('.hamburger');
+  const navbar = document.querySelector('.navbar');
+  const menu = document.querySelector('.menu');
+  
+  hamburger.addEventListener('click', function() {
+    // Toggle menu active state
     navbar.classList.toggle('active');
-});
-
-// Close dropdown when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown') && !e.target.closest('.hamburger')) {
-        const dropdowns = document.querySelectorAll('.dropdown');
-        dropdowns.forEach(dropdown => {
-            dropdown.classList.remove('active');
-        });
+    menu.classList.toggle('active');
+    
+    // Hamburger animation
+    this.classList.toggle('active');
+    
+    // Prevent body scrolling when menu is open
+    document.body.style.overflow = navbar.classList.contains('active') ? 'hidden' : 'auto';
+  });
+  
+  // Close menu and smooth scroll when clicking on a link
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Close mobile menu if open
+      navbar.classList.remove('active');
+      menu.classList.remove('active');
+      hamburger.classList.remove('active');
+      document.body.style.overflow = 'auto';
+      
+      // Get the target section's ID from the href attribute
+      const targetId = link.getAttribute('href');
+      
+      // Check if it's an internal link (starts with #)
+      if (targetId.startsWith('#')) {
+        e.preventDefault(); // Prevent default anchor behavior
         
-        if (!e.target.closest('.menu')) {
-            navbar.classList.remove('active');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          // Scroll to the target section smoothly
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          
+          // Update URL without jumping
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          } else {
+            window.location.hash = targetId;
+          }
         }
-    }
-});
-
-// Toggle dropdown
-const dropdown = document.querySelector('.dropdown');
-if (dropdown) {
-    dropdown.addEventListener('click', (e) => {
-        e.stopPropagation();
-        dropdown.classList.toggle('active');
+      }
     });
-}
+  });
 });
 document.addEventListener('DOMContentLoaded', function() {
   const API_URL = 'https://bootcamps-api-19sb.onrender.com/bootcamps'; // External API URL
@@ -268,4 +268,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize the page
   init();
+});
+// Form submission handler
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  // Get form data
+  const formData = {
+      fullName: document.getElementById('fullName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      dob: document.getElementById('dob').value,
+      gender: document.querySelector('input[name="gender"]:checked').value,
+      password: document.getElementById('password').value
+  };
+
+  try {
+      // Replace this URL with your actual JSON server endpoint for users
+      const response = await fetch('https://bootcamps-api-19sb.onrender.com/User', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+
+      const result = await response.json();
+      console.log('Success:', result);
+      alert('Registration successful!');
+      this.reset(); // Reset the form after successful submission
+  } catch (error) {
+      console.error('Error:', error);
+      alert('Registration failed. Please try again.');
+  }
 });
